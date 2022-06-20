@@ -1,0 +1,53 @@
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+      {%block title%}
+        Base Template
+      {%endblock%}
+    </title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+     {%block content1%}
+     {%endblock%}
+</head>
+<body>
+<div class="container">
+<table class="table">
+    <tr class="table_row">
+        <td colspan="6">
+            <center>
+        <h1>Trainee</h1>
+    </center>
+        </td>
+    </tr>
+    <tr>
+        <table class="table">
+            <tr class="thead">
+                <td>
+                    <a href="/trainee/List">list</a>
+                </td>
+                <td>
+                    <a href="/trainee/insert">insert</a>
+                </td>
+                <td>
+                    <a href="/trainee/delete">delete</a>
+                </td>
+                <td>
+                    <a href="/trainee/update">update</a>
+                </td>
+            </tr>
+        </table>
+        <td colspan="4">
+            {%block content%}
+            {%endblock%}
+        </td>
+
+     </tr>
+    <tr>
+        <td colspan="6" align="center">Footer</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

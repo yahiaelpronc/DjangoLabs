@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%block title%}
+        {{title}}
+{%endblock%}
+{%block content%}
+        <table class="table ">
+            <thead class="thead"><h1>list</h1></thead>
+                <tr class="trow">
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Branch</td>
+                        <td>national number</td>
+                        <td>Course</td>
+                </tr>
+                {% for t in outtrainne %}
+                                <tr class="trow">
+                                        <td>{{t.id}}</td>
+                                        <td>{{t.Name}}</td>
+                                        <td>{{t.Branch}}</td>
+                                        <td>{{t.NationalNumber}}</td>
+                                        <td>{{t.Course.Name}}</td>
+                                </tr>
+        {%endfor%}
+        </table>
+
+{%endblock%}
