@@ -1,0 +1,58 @@
+{%extends 'Temp.html'%}
+{% load static %}
+{%block content%}
+<br>
+<br>
+    <br>
+
+<br>
+<br>
+    <br>
+
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+                <div class="form-data" v-if="!submitted">
+                    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">National</th>
+      <th scope="col">Course_Name</th>
+        <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      {%for t in tr%}
+      <tr>
+                                        <td>{{t.id}}</td>
+                                        <td>{{t.username}}</td>
+                                        <td>{{t.national}}</td>
+                                        <td>{{t.fk_course.Cours_Name}}</td>
+                                        <td><a  class="btn btn-danger " href="/traine/delete/{{t.id}}">Delete</a>
+                                            <a  class="btn btn-primary " href="/traine/update/{{t.id}}">Update</a></td>
+      </tr>
+         {%endfor%}
+
+  </tbody>
+</table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+    <br>
+
+<br>
+<br>
+    <br>
+
+
+
+{%endblock%}
