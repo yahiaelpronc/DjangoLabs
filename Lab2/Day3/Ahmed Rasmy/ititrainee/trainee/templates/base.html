@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+      {%block title%}
+        home of template
+      {%endblock%}
+    </title>
+</head>
+<body>
+<table width="100%" border="1">
+    <tr>
+        <td colspan="6">
+        <h1 style="text-align:center">Trainee</h1>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <a href="/trainee/list/">list</a>
+            </br>
+            <a href="/trainee/insert/">Insert</a>
+            </br>
+            <a href="#">delete</a>
+            </br>
+            <a href="#">update</a>
+            </br>
+        </td>
+        <td colspan="4">
+            {%block content%}
+            {%endblock%}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6" align="center">Footer</td>
+    </tr>
+</table>
+
+</body>
+</html>

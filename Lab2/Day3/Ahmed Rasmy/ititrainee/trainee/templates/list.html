@@ -1,0 +1,149 @@
+{%extends 'layouts/master.html' %}
+
+{% load static %}
+{%block css %}
+<!-- Internal Data table css -->
+    <link href="{% static 'assets/plugins/datatable/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/plugins/datatable/css/buttons.bootstrap4.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/datatable/css/responsive.bootstrap4.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/plugins/datatable/css/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/datatable/css/responsive.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/select2/css/select2.min.css' %}" rel="stylesheet">
+    <!--Internal   Notify -->
+    <link href="{% static 'assets/plugins/notify/css/notifIt.css' %}" rel="stylesheet" />
+{% endblock %}
+{%block page-header%}
+
+				<!-- breadcrumb -->
+				<div class="breadcrumb-header justify-content-between">
+					<div class="my-auto">
+						<div class="d-flex">
+							<h4 class="content-title mb-0 my-auto">Trainees</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ List Trainees</span>
+						</div>
+					</div>
+					<div class="d-flex my-xl-auto right-content">
+						<div class="pr-1 mb-3 mb-xl-0">
+							<button type="button" class="btn btn-info btn-icon ml-2"><i class="mdi mdi-filter-variant"></i></button>
+						</div>
+						<div class="pr-1 mb-3 mb-xl-0">
+							<button type="button" class="btn btn-danger btn-icon ml-2"><i class="mdi mdi-star"></i></button>
+						</div>
+						<div class="pr-1 mb-3 mb-xl-0">
+							<button type="button" class="btn btn-warning  btn-icon ml-2"><i class="mdi mdi-refresh"></i></button>
+						</div>
+						<div class="mb-3 mb-xl-0">
+							<div class="btn-group dropdown">
+								<button type="button" class="btn btn-primary">14 Aug 2019</button>
+								<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate" data-x-placement="bottom-end">
+									<a class="dropdown-item" href="#">2015</a>
+									<a class="dropdown-item" href="#">2016</a>
+									<a class="dropdown-item" href="#">2017</a>
+									<a class="dropdown-item" href="#">2018</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- breadcrumb -->
+{%endblock%}
+
+{% block content %}
+
+				<!-- row -->
+				<div class="row">
+					<div class="col-xl-12">
+            <div class="card mg-b-20">
+                <div class="card-header pb-0">
+
+                        <a href="/trainee/insert/" class="modal-effect btn btn-sm btn-primary" style="color:white"><i
+                                class="fas fa-plus"></i>  Add Trainee  </a>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example1" class="table key-buttons text-md-nowrap" data-page-length="50">
+                            <thead>
+                                <tr>
+                                    <th class="border-bottom-0">#</th>
+                                    <th class="border-bottom-0">Name</th>
+                                    <th class="border-bottom-0"> National number</th>
+                                    <th class="border-bottom-0">Branch</th>
+                                    <th class="border-bottom-0">Course</th>
+                                    <th class="border-bottom-0">Operations</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for trainee in trainees%}
+                                    <tr>
+                                        <td>{{trainee.id}}</td>
+                                        <td>{{trainee.name}}</td>
+                                        <td>{{trainee.nationalnum}}</td>
+                                        <td>{{trainee.branch}}</td>
+                                        <td>{{trainee.courses.name}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                    class="btn ripple btn-primary" data-toggle="dropdown"
+                                                    id="dropdownMenuButton" type="button"> oerations<i
+                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                <div class="dropdown-menu tx-13">
+
+                                                        <a class="dropdown-item"
+                                                            href="/trainee/{{trainee.id}}/updategeneric/"><i
+                                                                class="text-success las la-pen"></i>&nbsp;&nbsp;Edit Trainee</a>
+
+                                                            <form method="post" action="/trainee/viewdelete/">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="id" value="{{trainee.id}}">
+                                                            <input type="submit" class="text-danger las la-pen" value="Delete Trainee">
+</form>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                {%endfor%}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+				</div>
+				<!-- row closed -->
+			</div>
+			<!-- Container closed -->
+		</div>
+		<!-- main-content closed -->
+
+{% endblock %}
+{% block js %}
+<!-- Internal Data tables -->
+    <script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/dataTables.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/responsive.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/dataTables.bootstrap4.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/jszip.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/vfs_fonts.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/buttons.colVis.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatable/js/responsive.bootstrap4.min.js' %}"></script>
+    <!--Internal  Datatable js -->
+    <script src="{% static 'assets/js/table-data.js' %}"></script>
+    <!--Internal  Notify js -->
+    <script src="{% static 'assets/plugins/notify/js/notifIt.js' %}"></script>
+    <script src="{% static 'assets/plugins/notify/js/notifit-custom.js' %}"></script>
+{% endblock %}
