@@ -4,6 +4,9 @@ from userss.models import registeration
 from .forms import *
 from django.http import HttpResponseRedirect
 from .models import *
+#Hint 
+#sorry i make the form in update not list 
+#def update2 this one with form 
 # Create your views here.
 def listtrainee(req):
     if ('loginid' not in req.session):
