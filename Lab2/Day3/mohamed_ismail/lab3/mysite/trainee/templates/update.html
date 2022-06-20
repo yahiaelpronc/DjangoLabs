@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{%block title%}
+        {{title}}
+{%endblock%}
+{%block content%}
+        <h1>
+                <center>list</center>
+        </h1>
+      <table class="table  mb-5">
+                <tr>
+                        <td style="color:orange">ID</td>
+                        <td style="color:orange">Name</td>
+                        <td style="color:orange">Branch</td>
+                        <td style="color:orange">national number</td>
+                        <td style="color:orange">Course</td>
+                        <td colspan="2" style="color:white"><center>Upate </center></td>
+                </tr>
+                {% for t in outtrainne %}
+                                <tr>
+                                             {% csrf_token %}
+                                        <td><center>
+                                                {{t.id}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                {{t.Name}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                {{t.Branch}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                {{t.NationalNumber}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                {{t.Course.Name}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <a href="/trainee/update2/{{t.id}}">update</a>
+                                                </center>
+                                        </td>
+                                     <td><center>
+                                                <a href="/trainee/{{t.id}}/update">updateGen</a>
+                                                </center>
+                                        </td>
+                                </tr>
+        {%endfor%}
+        </table>
+
+{%endblock%}

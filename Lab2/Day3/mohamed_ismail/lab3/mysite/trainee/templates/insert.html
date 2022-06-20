@@ -1,0 +1,86 @@
+{%extends 'base.html'%}
+{%block title%}
+Insert trainee
+{%endblock%}
+{%block content1%}
+    <link rel="stylesheet" href="/static/css/styleinput.css">
+{%endblock%}
+{%block content%}
+<center>
+<h1>list of trainee</h1>
+    </center>
+        <table class="table table-striped mb-5">
+                <tr scope="row">
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Branch</td>
+                        <td>national number</td>
+                        <td>Course</td>
+                </tr>
+                {% for t in outtrainne %}
+                                <tr scope="row">
+                                        <td>{{t.id}}</td>
+                                        <td>{{t.Name}}</td>
+                                        <td>{{t.Branch}}</td>
+                                        <td>{{t.NationalNumber}}</td>
+                                        <td>{{t.Course.Name}}</td>
+                                </tr>
+        {%endfor%}
+        </table>
+<center>
+<h1>insert here</h1>
+    </center>
+
+<div class="container1">
+    <form method="post" action="/trainee/insert">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-25">
+                 <label>ID</label>
+            </div>
+            <div class="col-75">
+                <input type="number" name="id" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label>Name</label>
+                </div>
+            <div class="col-75">
+                <input type="text" name="name" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                 <label>Branch</label>
+                </div>
+            <div class="col-75">
+                 <input type="number" name="Branch" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                 <label>National ID</label>
+                </div>
+            <div class="col-75">
+                  <input type="number" name="NationalID" value="">
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-25">
+                 <label>Course</label>
+                </div>
+            <div class="col-75">
+                  <select name="course">
+                    {%for c in courses%}
+                    <option value="{{c.id}}">{{c.Name}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" name="insert" value="Insert"/>
+        </div>
+    </form>
+</div>
+{%endblock%}
