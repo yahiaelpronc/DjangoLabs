@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block mainhead %}
+Update Trainee
+{% endblock %}
+{% block content %}
+<form class="w-50 m-auto" method="post" action="/consumeall/callapiupdate/">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{trainee.id}}">
+<div class="mb-3">
+  <label for="name" class="form-label">Name</label>
+  <input type="text" class="form-control" id="name" name="name" value="{{trainee.name}}" placeholder="Enter Your Name">
+</div>
+
+    <div class="mb-3">
+  <label for="nationalnum" class="form-label">National number</label>
+  <input type="number" class="form-control" name="nationalnum" value="{{trainee.nationalnum}}" id="nationalnum" placeholder="Enter National number">
+</div>
+<div class="mb-3">
+  <label for="branch" class="form-label">Branch</label>
+  <input type="number" class="form-control" name="branch" value="{{trainee.branch}}" id="branch" placeholder="Enter branch">
+</div>
+
+    <select class="form-select form-select-lg mb-3"  name="courses" aria-label=".form-select-lg example">
+  <option selected>Course</option>
+  <option value="1">python</option>
+  <option value="2">html</option>
+  <option value="3">admin 1</option>
+  <option value="4">javascript</option>
+</select>
+    <input type="submit" class="btn btn-primary" name="add" value="Update Trainee">
+    </form>
+{% endblock %}

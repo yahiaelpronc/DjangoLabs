@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block mainhead %}
+List All Trainees
+{% endblock %}
+{% block content %}
+
+<table  class="table-dark table-bordered m-auto row">
+  <thead>
+    <tr>
+      <th class="col">Name</th>
+      <th class="col"> number</th>
+      <th class="col">Branch</th>
+      <th class="col">Course</th>
+      <th class="col" colspan="2">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for trainee in trainees%}
+    <tr>
+<td class="col">{{trainee.name}}</td>
+<td class="col">{{trainee.nationalnum}}</td>
+<td class="col">{{trainee.branch}}</td>
+<td class="col">{{trainee.courses.name}}</td>
+<td class="col">
+                <a class="btn btn-primary"
+                    href="/consumeall/edit/{{trainee.id}}/">Edit</a>
+</td>
+      <td>
+                    <form method="post" action="/consumeall/callapidelete/">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{trainee.id}}">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+</form>
+
+</td>
+                                    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock %}
