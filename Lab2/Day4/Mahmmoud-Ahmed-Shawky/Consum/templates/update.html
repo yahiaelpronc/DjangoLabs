@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+                <div class="form-data" v-if="!submitted">
+                    <form method="POST" action="/Consme/save/{{iddd}}">
+                    <!-- Email input -->
+                       {% csrf_token %}
+                          {% for t in tr %}
+
+
+
+                            <div class="form-outline mb-4">
+                                      <label class="form-label" for="form1Example1">Username</label>
+                                <input type="text" id="form1Example1" name="username" value="{{t.username}}" class="form-control" />
+
+                             </div>
+                                                    <div class="form-outline mb-4">
+                               <label class="form-label" for="form1Example1">National ID</label>
+                                <input type="text"  name="national" value="{{t.national}}" class="form-control" />
+
+                             </div>
+                            <div class="form-outline mb-4">
+                                      <label class="form-label" for="form1Example1">Course_ID</label>
+                                <input type="text" id="form1Example1" name="course" value="{{t.fk_course}}" class="form-control" />
+
+                             </div>
+
+
+                            {% endfor %}
+
+
+                          <!-- Submit button -->
+                          <button type="submit" class="btn btn-primary btn-block">Update</button>
+                        </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
