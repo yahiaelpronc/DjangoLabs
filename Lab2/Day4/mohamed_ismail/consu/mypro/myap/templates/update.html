@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block title%}
+        {{title}}
+{%endblock%}
+{%block content%}
+        <h1>
+                <center>list</center>
+        </h1>
+                     <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-25">
+                                <label>Name</label>
+                                </div>
+                            <div class="col-75">
+                                <input type="text" name="name" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-25">
+                                 <label>Branch</label>
+                                </div>
+                            <div class="col-75">
+                                 <input type="number" name="Branch" value="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" name="insert" value="Insert"/>
+                        </div>
+                    </form>
+
+{%endblock%}
