@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List trainees</title>
+</head>
+<body>
+<div border="1">
+    <h1>
+    <center>list</center>
+</h1>
+<table border="1" width="100%">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Branch</td>
+        <td>national number</td>
+        <td>Course</td>
+    </tr>
+    {%for t in data %}
+
+    <tr>
+        <td>{{t.id}}</td>
+        <td>{{t.name}}</td>
+        <td>{{t.branch}}</td>
+        <td>{{t.email}}</td>
+        <td>{{t.courses.name}}</td>
+        <td>
+                    <a href="http://127.0.0.1:8000/trainee/update/{{t.id}}">update</a>
+                    <a href="http://127.0.0.1:8000/trainee/delete/{{t.id}}">delete</a>
+        </td>
+    </tr>
+
+
+
+    {%endfor%}
+    </table>
+
+</div>
+</body>
+</html>
