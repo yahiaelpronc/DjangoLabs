@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block title%}
+        {{title}}
+{%endblock%}
+{%block user%}{{username}}{%endblock%}
+{%block content%}
+<center>
+<h1>list of trainee</h1>
+    </center>
+        <table class="table table-striped">
+                <tr scope="row">
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Branch</td>
+                        <td colspan="4"><center> what u wanna to do </center></td>
+
+                </tr>
+                {% for t in outtrainne %}
+                    <tr scope="row">
+                        <td>{{t.id}}</td>
+                        <td>{{t.username}}</td>
+                        <td>{{t.brnach}}</td>
+                        <td><a href="/myap/list">list</a></td>
+                        <td><a href="/myap/insert">insert</a></td>
+                        <td><a href="/myap/update/{{t.id}}">update</a></td>
+                        <td><a href="/myap/delete/{{t.id}}">delete</a></td>
+                    </tr>
+        {%endfor%}
+        </table>
+
+{%endblock%}

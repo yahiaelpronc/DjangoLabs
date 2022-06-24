@@ -1,0 +1,30 @@
+{%extends 'Temp.html'%}
+  {{main}}
+
+{%block content%}
+       <h1>
+                <center>list</center>
+        </h1>
+        <table border="1" width="100%">
+                <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Branch</td>
+                        <td>Course</td>
+                </tr>
+                {%for t in trainees%}
+                        {%if t.name != 'fathy'%}
+                                <tr>
+                                        <td>{{t.id}}</td>
+                                        <td>{{t.name}}</td>
+                                        <td>{{t.brnach}}</td>
+                                        <td>{{t.courses.name}}</td>
+                                </tr>
+                        {%endif%}
+
+
+        {%endfor%}
+        </table>
+
+
+{%endblock%}

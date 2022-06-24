@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%block title%}
+Insert trainee
+{%endblock%}
+{%block content%}
+    <form method="post" action="/trainee/insert">
+        {% csrf_token %}
+        <label>ID</label>
+        <input type="number" name="id" value="">
+        </br>
+        </br>
+        <label>Name</label>
+        <input type="text" name="name" value="">
+        </br>
+        </br>
+         <label>Branch</label>
+        <input type="number" name="Branch" value="">
+        </br>
+        </br>
+        <label>National ID</label>
+        <input type="number" name="NationalID" value="">
+        </br>
+        </br>
+         <label>Course</label>
+            <select name="course">
+                {%for c in courses%}
+                <option value="{{c.id}}">{{c.Name}}</option>
+                {%endfor%}
+            </select>
+            <input type="submit" name="insert" value="Insert"/>
+    </form>
+{%endblock%}

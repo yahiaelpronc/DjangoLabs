@@ -1,0 +1,17 @@
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>updae2</title>
+</head>
+<body>
+        <h1>
+                <center>list</center>
+        </h1>
+<form method="post" action="/trainee/update2/{{id}}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="update" value="update"/>
+    </td>
+</form>
+</body>

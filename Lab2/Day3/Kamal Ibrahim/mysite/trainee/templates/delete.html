@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+{%block title%}
+        {{title}}
+{%endblock%}
+{%block content%}
+        <h1>
+                <center>list</center>
+        </h1>
+        <table border="1" width="100%">
+                <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Branch</td>
+                        <td>national number</td>
+                        <td>Course</td>
+                        <td colspan="2"><center>Upate or Delete</center></td>
+                </tr>
+                {% for t in outtrainne %}
+                                <tr>
+                                    <form method="post" action="/trainee/delete">
+                                        <td>
+                                             {% csrf_token %}
+                                            <center>
+                                                <input readonly name="id" value={{t.id}} style="background:none; border:none ">
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                               {{t.Name}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                {{t.Branch}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                               {{t.NationalNumber}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                {{t.Course.Name}}
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <input type="submit" name="delete" value="delete"/>
+                                                </center>
+                                        </td>
+                                        </form>
+                                </tr>
+        {%endfor%}
+        </table>
+
+{%endblock%}
