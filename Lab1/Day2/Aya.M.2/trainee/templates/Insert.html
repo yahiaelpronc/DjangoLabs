@@ -1,0 +1,53 @@
+{%extends 'Temp.html'%}
+  {{main}}
+
+{%block content%}
+<link rel="stylesheet" href="register.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+                <div class="form-data" v-if="!submitted">
+                    <form method="POST" action="/Traine/Insert/">
+                    <!-- Email input -->
+                         {% csrf_token %}
+                            <div class="form-outline mb-4">
+                                      <label class="form-label" for="form1Example1">Username</label>
+                                <input type="text" id="form1Example1" name="username" class="form-control" />
+
+                             </div>
+                                                    <div class="form-outline mb-4">
+                               <label class="form-label" for="form1Example1">Nationl ID</label>
+                                <input type="text"  name="national" class="form-control" />
+
+                             </div>
+                            <div class="form-outline mb-4">
+                                  <select name="course">
+                                      {%for c in courses%}
+                                      <option value="{{c.Course_id}}">{{c.Cours_Name}}</option>
+                                      {%endfor%}
+
+                                  </select>
+                             </div>
+
+
+
+
+                          <!-- Submit button -->
+                          <button type="submit" class="btn btn-primary btn-block">Insert</button>
+                        </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
