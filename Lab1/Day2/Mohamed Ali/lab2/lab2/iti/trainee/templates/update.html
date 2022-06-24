@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{%block title%}
+        {{title}}
+{%endblock%}
+{%block content%}
+        <h1>
+                <center>list</center>
+        </h1>
+        <table border="1" width="100%">
+                <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Branch</td>
+                        <td>national number</td>
+                        <td>Course</td>
+                        <td colspan="2"><center>Upate </center></td>
+                </tr>
+                {% for t in outtrainne %}
+                                <tr>
+                                     <form method="post" action="/trainee/update">
+                                             {% csrf_token %}
+                                        <td><center>
+                                                <input readonly name="id" value={{t.id}} style=" border:none ">
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <input type="text" name="name" value={{t.Name}}>
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <input type="number" name="Branch" value={{t.Branch}}>
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <input type="number" name="NationalID" value={{t.NationalNumber}}>
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <input type="text" name="course" value={{t.Course.Name}}>
+                                                </center>
+                                        </td>
+                                        <td><center>
+                                                <input type="submit" name="update" value="update"/>
+                                                </center>
+                                        </td>
+                                     </form>
+                                </tr>
+        {%endfor%}
+        </table>
+
+{%endblock%}
