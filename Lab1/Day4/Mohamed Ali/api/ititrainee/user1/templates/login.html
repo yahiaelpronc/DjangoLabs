@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+     {% load static %}
+    <!--Render All Elements Normally -->
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+    <!-- Font Awsome Library -->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <!-- Main Template Css File -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="login">
+      <div class="container">
+        <br /><br />
+        <div class="login-details">
+          <div class="logo">
+           <a href="#" class="logo"> <span>I</span>TI <span>T</span>RAINEES</a>
+          </div>
+          <form action="/user1/login/" method="POST">
+            {% csrf_token %}
+            <div class="name main-input">
+              <p>name</p>
+              <i class="fa-solid fa-user-pen"></i>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter Your Name"
+                required
+                pattern="[a-zA-Z\s]{4,}"
+              />
+            </div>
+            <div class="password main-input">
+              <p>password</p>
+              <i class="fa-solid fa-lock"></i>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="........"
+                required
+
+              />
+            </div>
+
+            <input type="submit" name="login" class="submit" value="Login" />
+
+            <div class="forget">
+              <a href="/user1/register/">signup</a>
+              <a href="#">Forget Password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
